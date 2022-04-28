@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polyotnle</title>
+    <link rel="stylesheet" href="../src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vexflow@4.0.1-beta.2/build/cjs/vexflow.js"></script>
+    <script type="module" src="../dist/main.js"></script>
+  </head>
+  <body>
+    <div class="overlay active" id="help-overlay">
+      <div class="content">
+        <header class="header-modal">
+          <div class="how-to-play"><strong>HOW TO PLAY</strong></div>
+          <button data-close class="close-help">&times;</button>
+        </header>
+        <div class="content-container">
+          <p>Guess the chord in three tries.</p>
+          <p>Press <strong>CHORD</strong> to hear the chord.</p>
+          <p>Press <strong>PLAY C</strong> to hear a C4.</p>
+          <p>
+            After each guess, the color of the notes will change to show how
+            close your guess was to the chord.
+          </p>
+
+          <p>Notes will be at least a whole tone apart and all accidentals are sharps.</p>
+          <p>New chord every day at midnight.</p>
+        </div>
+        <div class="reference">
+          <p><strong>Reference</strong></p>
+          <p class="green-reference">
+            <svg>
+              <path
+                stroke-width="0.3"
+                stroke-dasharray="none"
+                fill="rgb(83, 141, 78)"
+                stroke="none"
+                d="M51.73288 64.9456C46.3696 64.9456,43 67.16392,43 69.91576C43 72.63952,45.30256 75.0544,51.33976 75.0544C57.96664 75.0544,60.07264 72.75184,60.07264 69.91576C60.07264 67.0516,55.495599999999996 64.9456,51.73288 64.9456M47.4928 67.44472C47.94208 66.04072,49.43032 65.84416,50.69392 65.84416C53.47384 65.84416,55.69216 68.82064,55.69216 71.2636C55.69216 72.49912,55.15864 73.6504,53.83888 73.95928C53.44576 74.0716,52.99648 74.12776,52.57528 74.12776C51.115120000000005 74.12776,49.62688 73.14496,48.78448 72.02176C47.97016 71.09512,47.38048 69.7192,47.38048 68.42752C47.38048 68.09056,47.40856 67.78168,47.4928 67.44472"
+              ></path>
+            </svg>
+            <div>Green shows that this note is in the chord and in the correct order.</div>
+          </p>
+          <p class="yellow-reference">
+            <svg>
+              <path
+                stroke-width="0.3"
+                stroke-dasharray="none"
+                fill="rgb(181, 159, 59)"
+                stroke="none"
+                d="M51.73288 64.9456C46.3696 64.9456,43 67.16392,43 69.91576C43 72.63952,45.30256 75.0544,51.33976 75.0544C57.96664 75.0544,60.07264 72.75184,60.07264 69.91576C60.07264 67.0516,55.495599999999996 64.9456,51.73288 64.9456M47.4928 67.44472C47.94208 66.04072,49.43032 65.84416,50.69392 65.84416C53.47384 65.84416,55.69216 68.82064,55.69216 71.2636C55.69216 72.49912,55.15864 73.6504,53.83888 73.95928C53.44576 74.0716,52.99648 74.12776,52.57528 74.12776C51.115120000000005 74.12776,49.62688 73.14496,48.78448 72.02176C47.97016 71.09512,47.38048 69.7192,47.38048 68.42752C47.38048 68.09056,47.40856 67.78168,47.4928 67.44472"
+              ></path>
+            </svg>
+            <div>Yellow shows that this note is in the chord but in the wrong order.</div>
+          </p>
+          <p class="grey-reference">
+            <svg>
+              <path
+                stroke-width="0.3"
+                stroke-dasharray="none"
+                fill="rgb(77, 77, 77)"
+                stroke="none"
+                d="M51.73288 64.9456C46.3696 64.9456,43 67.16392,43 69.91576C43 72.63952,45.30256 75.0544,51.33976 75.0544C57.96664 75.0544,60.07264 72.75184,60.07264 69.91576C60.07264 67.0516,55.495599999999996 64.9456,51.73288 64.9456M47.4928 67.44472C47.94208 66.04072,49.43032 65.84416,50.69392 65.84416C53.47384 65.84416,55.69216 68.82064,55.69216 71.2636C55.69216 72.49912,55.15864 73.6504,53.83888 73.95928C53.44576 74.0716,52.99648 74.12776,52.57528 74.12776C51.115120000000005 74.12776,49.62688 73.14496,48.78448 72.02176C47.97016 71.09512,47.38048 69.7192,47.38048 68.42752C47.38048 68.09056,47.40856 67.78168,47.4928 67.44472"
+              ></path>
+            </svg>
+            <div>Grey shows that this note is not in the chord.</div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay inactive" style="display:none;" id="info-overlay">
+      <div class="content">
+        <header class="header-modal">
+          <div class="information"><strong>INFO</strong></div>
+          <button data-close class="close-info">&times;</button>
+        </header>
+        <ul class="content-info">
+          <p>Made by Joel Bae</p>
+          <p>Inspired by Wordle</p>
+          <p>The Github for this project:</p>
+          <p>v1.0.0</p>
+        </ul>
+      </div>
+    </div>
+
+    <div class="header">
+      <button class="help" data-open-target="#help-overlay">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </button>
+      <div class="name">POLYTONLE</div>
+      <button class="info" data-open-target="#info-overlay">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="7" x2="12.01" y2="7"></line>
+          <line x1="12" y1="11" x2="12.01" y2="17"></line>
+          
+        </svg>
+    </div>
+
+    <div class="message-container" data-message-container></div>
+
+    <div id="staff1" style="text-align: center"></div>
+    <div id="staff2" style="text-align: center"></div>
+    <div id="staff3" style="text-align: center"></div>
+
+    <div class="gap"></div>
+
+    <div class="keyboard">
+      <button class="key" data-note="c/4" data-key="a">A</button>
+      <button class="key black" data-note="c#/4" data-key="w">W</button>
+      <button class="key" data-note="d/4" data-key="s">S</button>
+      <button class="key black" data-note="d#/4" data-key="e">E</button>
+      <button class="key" data-note="e/4" data-key="d">D</button>
+      <button class="key" data-note="f/4" data-key="f">F</button>
+      <button class="key black" data-note="f#/4" data-key="t">T</button>
+      <button class="key" data-note="g/4" data-key="g">G</button>
+      <button class="key black" data-note="g#/4" data-key="y">Y</button>
+      <button class="key" data-note="a/4" data-key="h">H</button>
+      <button class="key black" data-note="a#/4" data-key="u">U</button>
+      <button class="key" data-note="b/4" data-key="j">J</button>
+      <button class="key" data-note="c/5" data-key="k">K</button>
+      <button class="key black" data-note="c#/5" data-key="o">O</button>
+      <button class="key" data-note="d/5" data-key="l">l</button>
+      <div class="space"></div>
+      <button class="key large" data-enter>Enter</button>
+      <button class="key large" data-back>Back</button>
+      <button class="key large" data-chord>Chord</button>
+      <button class="key large" data-tune>Play C</button>
+    </div>
+  </body>
+</html>
