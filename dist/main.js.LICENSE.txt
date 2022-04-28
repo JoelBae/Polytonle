@@ -3,10 +3,4 @@
  * @author Yotam Mann
  * @license http://opensource.org/licenses/MIT MIT License
  * @copyright 2014-2019 Yotam Mann
- *
- * VexFlow
- * @author Mohit Muthanna Cheppudira
- * @license http://opensource.org/licenses/MIT MIT License
- * @copyright 2010 Mohit Muthanna Cheppudira
- *
  */

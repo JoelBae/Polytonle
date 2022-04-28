@@ -54,6 +54,7 @@ const piano = new Tone.Sampler({
 let guess = [];
 let cur_guess = 1;
 let prevCount = 0;
+let gameInputs = true;
 
 const offsetFromDate = new Date(2022, 3, 26);
 const msOffset = Date.now() - offsetFromDate;
@@ -75,15 +76,15 @@ function stopInteraction() {
 }
 
 function handleMouseClick(e) {
-  if (e.target.matches("[data-key]")) {
+  if (gameInputs && e.target.matches("[data-key]")) {
     pressKey(e.target.dataset.key);
-  } else if (e.target.matches("[data-enter]")) {
+  } else if (gameInputs && e.target.matches("[data-enter]")) {
     submitGuess();
-  } else if (e.target.matches("[data-back]")) {
+  } else if (gameInputs && e.target.matches("[data-back]")) {
     deleteKey();
-  } else if (e.target.matches("[data-chord")) {
+  } else if (gameInputs && e.target.matches("[data-chord")) {
     playChord();
-  } else if (e.target.matches("[data-tune]")) {
+  } else if (gameInputs && e.target.matches("[data-tune]")) {
     playCNote();
   } else if (e.target.matches("[data-open-target]")) {
     const modal = document.querySelector(e.target.dataset.openTarget);
@@ -120,6 +121,9 @@ function closeModal(modal) {
 }
 
 function handleKeyPress(e) {
+  if (!gameInputs) {
+    return;
+  }
   if (e.key === "Enter") {
     submitGuess();
     return;
@@ -284,6 +288,16 @@ async function applyColors(submit) {
 
   if (isCorrect) {
     correct(cur_guess);
+  } else if (cur_guess === 4) {
+    showMessage(
+      "The chord was " +
+        answer[0].pitch +
+        " " +
+        answer[1].pitch +
+        " " +
+        answer[2].pitch,
+      5000
+    );
   }
 }
 
@@ -313,7 +327,7 @@ function correct(guess_num) {
   } else if (guess_num === THIRDGUESS) {
     setTimeout(showMessage, 500, "Amazing", 3000);
   }
-  stopInteraction();
+  gameInputs = false;
 }
 
 function showMessage(string, duration = 1000) {
