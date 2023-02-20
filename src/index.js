@@ -56,7 +56,7 @@ let cur_guess = 1;
 let prevCount = 0;
 let gameInputs = true;
 
-const offsetFromDate = new Date(2022, 3, 26);
+const offsetFromDate = new Date(2023, 1, 26);
 const msOffset = Date.now() - offsetFromDate;
 const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 const answer = notes.dict[Math.floor(dayOffset)];
