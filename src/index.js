@@ -56,8 +56,8 @@ let cur_guess = 1;
 let prevCount = 0;
 let gameInputs = true;
 
-const offsetFromDate = new Date(2023, 1, 26);
-const msOffset = Date.now() - offsetFromDate;
+const offsetFromDate = new Date(2023, 0, 26);
+const msOffset = Date.now() - offsetFromDate.getTime();
 const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 const answer = notes.dict[Math.floor(dayOffset)];
 const messageContainer = document.querySelector("[data-message-container");
@@ -363,7 +363,6 @@ function playChord() {
     console.log("ERROR: Piano not loaded");
     return;
   }
-
   piano.triggerAttackRelease(
     [answer[0].toneNote, answer[1].toneNote, answer[2].toneNote],
     2
